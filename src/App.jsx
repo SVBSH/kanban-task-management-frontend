@@ -15,7 +15,7 @@ function App() {
     <>
       <main className="main">
         <Header isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />
-        <picture className="logo" data-is-nav-open={isNavOpen}>
+        <picture className="logo | bg-primary-3" data-is-nav-open={isNavOpen}>
           <source srcSet={logoDesktop} media="(min-width: 768px)" />
           <img src={logoMobile} alt="logo" />
         </picture>

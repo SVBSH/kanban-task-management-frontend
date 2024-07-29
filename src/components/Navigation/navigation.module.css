@@ -19,6 +19,7 @@
 
 .nav[data-open='true'] {
   display: grid;
+  padding-block: 2rem;
 }
 
 .control {
@@ -26,6 +27,56 @@
   gap: 1rem;
   align-self: end;
   justify-self: end;
+}
+
+.theme-switch-container {
+  display: flex;
+  gap: 1.5em;
+  padding-block: 1rem;
+
+  & > img {
+    cursor: pointer;
+  }
+}
+
+.theme-switch {
+  cursor: pointer;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+
+  &::after {
+    --size: 14px;
+    content: '';
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-block: auto;
+    margin-inline: auto;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color-white-4);
+    border-radius: 50%;
+  }
+
+  &::after {
+    /* toggle between -70% and 70% */
+    transform: translateX(70%);
+  }
+}
+
+.hide-sidebar-container {
+  cursor: pointer;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
 }
 
 .board-list {
@@ -46,7 +97,6 @@
   .nav-container {
     display: grid;
     position: relative;
-    padding-block: 2rem;
   }
 
   .nav {

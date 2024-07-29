@@ -14,7 +14,9 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
 
   return (
     <header className={styles.header + ' bg-primary-3'}>
-      <h1 style={{ fontSize: '18px' }}>Platform Launch</h1>
+      <h1 className="clr-primary-2" style={{ fontSize: '18px' }}>
+        Platform Launch
+      </h1>
 
       {/* Control Sidebar Visibility */}
       <div
@@ -59,16 +61,15 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
       <div
         className={styles['board-control']}
         data-menu-open={boardControlMenuOpen}
-        onClick={handleBoardControlMenuOpen}
       >
-        <button className="clr-gray-4">
+        <button className="clr-gray-4" onClick={handleBoardControlMenuOpen}>
           {/* <img src={iconBoardControl} alt="Board Control" /> */}
         </button>
         <ul
           role="list"
           className={
             styles['board-control-menu'] +
-            ' | bg-primary-3' +
+            ' | bg-primary-4' +
             (!boardControlMenuOpen ? ' ' + styles['hidden'] : '')
           }
         >
