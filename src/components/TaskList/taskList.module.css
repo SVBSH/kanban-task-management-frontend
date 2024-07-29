@@ -1,0 +1,6 @@
+.task-list {
+  display: grid;
+  gap: 2rem;
+  padding: 0;
+  padding-block: 1rem;
+}

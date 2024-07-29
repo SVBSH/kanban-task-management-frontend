@@ -1,0 +1,55 @@
+.nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin-inline: auto;
+  background-color: yellowgreen;
+}
+
+.control {
+  display: grid;
+  gap: 1rem;
+  align-self: end;
+  justify-self: end;
+}
+
+.board-list {
+  display: grid;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.board-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-item {
+  padding: 2em;
+  margin: 0.5em;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: grid;
+    align-content: space-between;
+    padding-block: 2rem;
+
+    position: initial;
+    margin-inline: 0;
+    width: var(--navigation-width);
+    transition: width 0.3s ease-in-out;
+    overflow-x: hidden;
+
+    & > * {
+      min-width: var(--navigation-width);
+    }
+  }
+
+  .nav[data-open='true'] {
+    width: 0;
+  }
+}

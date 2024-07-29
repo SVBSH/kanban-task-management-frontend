@@ -1,0 +1,9 @@
+.task-item {
+  display: grid;
+  gap: 0.5em;
+  cursor: pointer;
+  background-color: white;
+
+  padding-block: 1.4375rem;
+  padding-inline: 1rem;
+}
