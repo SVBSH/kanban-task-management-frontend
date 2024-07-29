@@ -90,13 +90,9 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 .main {
+  height: 100vh;
   position: relative;
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -104,21 +100,10 @@ textarea:not([rows]) {
   background-color: hsl(221, 69%, 94%);
 }
 
-.header {
-  grid-column: 2;
-  grid-row: 1;
-  background-color: red;
-}
-
 .content {
   display: grid;
   grid-column: 1/-1;
   width: 100%;
-}
-
-.logo {
-  grid-row: 1;
-  grid-column: 1;
 }
 
 @media (min-width: 768px) {

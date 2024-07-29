@@ -1,7 +1,7 @@
-import './App.css'
 import { useState } from 'react'
 import TaskGroup from './components/TaskGroup/TaskGroup'
 import Navigation from './components/Navigation/Navigation'
+import Header from './components/Header/Header'
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -12,10 +12,7 @@ function App() {
   return (
     <>
       <main className="main">
-        <header className="header">
-          <div className="logo">Logo</div>
-          <button onClick={handleToggleNav}>Toggle Navbar</button>
-        </header>
+        <Header handleToggleNav={handleToggleNav} />
         <div className="logo">Logo</div>
         <div className="content">
           <Navigation isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
