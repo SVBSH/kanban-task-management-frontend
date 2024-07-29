@@ -1,11 +1,120 @@
 .header {
   grid-column: 2;
   grid-row: 1;
-  background-color: red;
+
+  display: grid;
+  grid-template-columns: max-content max-content 1fr max-content max-content;
+  grid-auto-flow: column;
+  align-items: center;
+
+  padding-block: 1.5rem;
+  padding-inline: 1rem;
+  border-bottom: 2px solid var(--t-border-color);
+}
+
+.hidden {
+  display: none;
 }
 
 .header-logo {
   width: 100%;
   grid-row: 1;
   grid-column: 1;
+}
+
+.navbar-mobile-control {
+  padding-left: 0.5rem;
+}
+
+/* Add Neew Task */
+.add-new-task-button-lg {
+  display: none;
+}
+
+.add-new-task-button-sm {
+  padding-block: 0.625rem;
+  padding-inline: 1.125rem;
+  border-radius: 24px;
+}
+
+.new-task-container {
+  grid-column: 4;
+  /* padding-right: 1rem; */
+
+  & > button {
+    border: none;
+  }
+}
+
+/*  Board Control */
+.board-control {
+  cursor: pointer;
+  margin-left: 1rem;
+
+  grid-column: 5;
+
+  display: grid;
+  position: relative;
+
+  & > button {
+    border: none;
+    background-color: transparent;
+  }
+
+  & button > img {
+    margin: auto;
+  }
+}
+
+.board-control > button {
+  cursor: pointer;
+  padding-inline: 0.5rem;
+  width: 5px;
+  height: 20px;
+  background-image: url('/icon-vertical-ellipsis.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.board-control-menu {
+  cursor: pointer;
+  padding: 1rem;
+
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  z-index: 2;
+  min-width: 192px;
+  /* width: max-content; */
+  height: max-content;
+
+  transform: translateY(100%);
+  border-radius: 8px;
+
+  & button {
+    border: none;
+    background-color: transparent;
+  }
+
+  > * + * {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-inline: 2rem;
+  }
+  .navbar-mobile-control {
+    display: none;
+  }
+
+  .add-new-task-button-sm {
+    display: none;
+  }
+
+  .add-new-task-button-lg {
+    display: block;
+  }
 }

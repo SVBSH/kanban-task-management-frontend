@@ -4,7 +4,7 @@
   grid-auto-flow: column;
   overflow-x: scroll;
   overflow-y: scroll;
-  --header-height: 48px;
+  --header-height: 82px;
   /* this should be calculated dynamically */
   max-height: calc(100vh - var(--header-height));
 }

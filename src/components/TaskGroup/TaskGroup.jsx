@@ -5,33 +5,13 @@ const TaskGroup = (props) => {
     <div className={styles['task-group-container']}>
       <ul className={styles['task-group-list']} role="list">
         <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
-          <TaskList />
-        </li>
-        <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
-          <TaskList />
-        </li>
-        <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
-          <TaskList />
-        </li>
-        <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
-          <TaskList />
-        </li>
-        <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
-          <TaskList />
-        </li>
-        <li className={styles['task-group-item']}>
-          <h2>TODO (4)</h2>
+          <h2 className="color-gray-3">TODO (4)</h2>
           <TaskList />
         </li>
 
         {/* TODO: add new column */}
         <li className={styles['task-group-item']} data-new-column="true">
-          <h2>+New Column</h2>
+          <h2 className="color-gray-3">+New Column</h2>
         </li>
       </ul>
     </div>
