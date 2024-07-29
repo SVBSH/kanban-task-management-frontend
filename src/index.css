@@ -3,12 +3,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-h3,
-h2,
-p {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -93,6 +89,11 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .main {

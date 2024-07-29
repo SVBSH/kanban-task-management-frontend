@@ -8,6 +8,10 @@
   background-color: yellowgreen;
 }
 
+.nav[data-open='true'] {
+  display: grid;
+}
+
 .control {
   display: grid;
   gap: 1rem;
