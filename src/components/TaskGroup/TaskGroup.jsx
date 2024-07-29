@@ -20,6 +20,19 @@ const TaskGroup = (props) => {
           <h2>TODO (4)</h2>
           <TaskList />
         </li>
+        <li className={styles['task-group-item']}>
+          <h2>TODO (4)</h2>
+          <TaskList />
+        </li>
+        <li className={styles['task-group-item']}>
+          <h2>TODO (4)</h2>
+          <TaskList />
+        </li>
+
+        {/* TODO: add new column */}
+        <li className={styles['task-group-item']} data-new-column="true">
+          <h2>+New Column</h2>
+        </li>
       </ul>
     </div>
   )

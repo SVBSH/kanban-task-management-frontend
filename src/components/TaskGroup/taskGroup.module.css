@@ -1,20 +1,37 @@
 .task-group-container {
+  --spacing: 1.5rem;
   display: grid;
   grid-auto-flow: column;
   overflow-x: scroll;
-  min-height: 80vh;
+  overflow-y: scroll;
+  --header-height: 48px;
+  /* this should be calculated dynamically */
+  max-height: calc(100vh - var(--header-height));
 }
 
 .task-group-list {
-  text-align: left;
   display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
   grid-auto-flow: column;
-  gap: 1.5em;
+  gap: var(--spacing);
+  padding-block: var(--spacing);
+  padding-inline: var(--spacing);
 }
 
 .task-group-item {
   max-width: 300px;
   min-width: 280px;
   border: 1px solid black;
-  /* background-color: pink; */
+
+  &[data-new-column='true'] {
+    /* https://youtu.be/8MaCTDkoVd8?si=FoS6Q97NeA7dDncC */
+    position: sticky;
+    /* right: 0; */
+    top: var(--spacing);
+    cursor: pointer;
+    background-color: pink;
+    place-content: center;
+    text-align: center;
+    max-height: 88vh;
+  }
 }

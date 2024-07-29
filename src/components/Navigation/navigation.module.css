@@ -12,6 +12,9 @@
   display: grid;
 }
 
+.heading-all-boards {
+}
+
 .control {
   display: grid;
   gap: 1rem;
@@ -20,15 +23,12 @@
 }
 
 .board-list {
-  display: grid;
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.board-list {
-  display: flex;
-  flex-direction: column;
 }
 
 .board-item {
@@ -39,8 +39,8 @@
 @media (min-width: 768px) {
   .nav {
     display: grid;
-    align-content: space-between;
     padding-block: 2rem;
+    grid-template-rows: max-content 1fr max-content;
 
     position: initial;
     margin-inline: 0;

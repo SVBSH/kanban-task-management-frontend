@@ -11,6 +11,20 @@ const TaskList = () => {
       <Task />
       <Task />
       <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
     </ul>
   )
 }
