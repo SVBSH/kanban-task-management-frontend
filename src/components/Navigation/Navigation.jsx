@@ -51,7 +51,7 @@ const Navigation = ({ isNavOpen, handleToggleNav }) => {
                   fill="#828FA3"
                 />
               </svg>
-              <span>+Create New Board</span>
+              <span>+ Create New Board</span>
             </button>
           </li>
         </ul>

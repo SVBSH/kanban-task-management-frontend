@@ -1,19 +1,11 @@
-import { useState } from 'react'
 import TaskGroup from './components/TaskGroup/TaskGroup'
-import Navigation from './components/Navigation/Navigation'
-import Header from './components/Header/Header'
+import HeaderNavigation from './components/HeaderNavigation/HeaderNavigation'
 
 function App() {
-  const [isNavOpen, setIsNavOpen] = useState(true)
-
-  function handleToggleNav() {
-    setIsNavOpen((isNavOpen) => !isNavOpen)
-  }
   return (
     <>
       <main className="main">
-        <Header isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />
-        <Navigation isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />
+        <HeaderNavigation />
         <TaskGroup />
       </main>
     </>
