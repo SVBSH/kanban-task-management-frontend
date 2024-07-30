@@ -4,6 +4,8 @@ import styles from './header.module.css'
 import iconSidebarVisible from '/icon-chevron-up.svg'
 import iconSidebarHidden from '/icon-chevron-down.svg'
 import iconAddNewTask from '/icon-add-task-mobile.svg'
+import logoMobile from '/logo-mobile.svg'
+import logoDesktop from '/logo-dark.svg'
 
 const Header = ({ isNavOpen, handleToggleNav }) => {
   const [boardControlMenuOpen, setBoardControlMenuOpen] = useState(false)
@@ -14,6 +16,10 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
 
   return (
     <header className={styles.header + ' bg-primary-3'}>
+      <picture className="logo | bg-primary-3" data-is-nav-open={isNavOpen}>
+        <source srcSet={logoDesktop} media="(min-width: 768px)" />
+        <img src={logoMobile} alt="logo" />
+      </picture>
       <h1 className="clr-primary-2" style={{ fontSize: '18px' }}>
         Platform Launch
       </h1>
@@ -37,8 +43,6 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
           data-sidebarHidden
         />
       </div>
-
-      {/* <button onClick={handleToggleNav}>Toggle Navbar</button> */}
 
       <div className={styles['new-task-container']}>
         <button

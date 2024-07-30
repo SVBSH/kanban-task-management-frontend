@@ -1,38 +1,53 @@
 .nav-container {
-  /* background-color: yellowgreen; */
-  border-right: 2px solid var(--t-border-color);
-}
-
-.nav {
+  --padding-start: 1.5rem;
   display: none;
   position: absolute;
   left: 0;
   right: 0;
-  width: 100%;
+  top: 102px;
+  z-index: 4;
+  width: max-content;
+
   margin-inline: auto;
   background-color: inherit;
+  /* ................. */
+  /* padding-inline: 2rem; */
+  border-radius: 8px;
+  min-width: 280px;
+}
+
+.heading-all-boards {
+  padding-inline-start: var(--padding-start);
+}
+
+.nav-container[data-open='true'] {
+  display: grid;
 }
 
 .nav-control {
   display: none;
 }
 
-.nav[data-open='true'] {
+.nav {
   display: grid;
-  padding-block: 2rem;
+  padding-block: 1rem;
 }
 
 .control {
   display: grid;
-  gap: 1rem;
-  align-self: end;
-  justify-self: end;
+  gap: 1.5rem;
+  justify-self: center;
+  width: 100%;
+  padding-inline: 1rem;
 }
 
 .theme-switch-container {
+  margin-top: 1rem;
   display: flex;
   gap: 1.5em;
   padding-block: 1rem;
+  justify-content: center;
+  border-radius: 8px;
 
   & > img {
     cursor: pointer;
@@ -72,7 +87,7 @@
 
 .hide-sidebar-container {
   cursor: pointer;
-  display: flex;
+  display: none;
   gap: 1em;
   align-items: center;
   align-content: center;
@@ -89,37 +104,74 @@
 }
 
 .board-item {
-  padding: 2em;
-  margin: 0.5em;
+  &[data-active='true'] button {
+    background-color: var(--color-purple-4);
+    color: var(--color-white-4);
+
+    & path {
+      fill: var(--color-white-4);
+    }
+  }
+
+  &[data-type='new-board'] button {
+    color: var(--color-purple-4);
+
+    & path {
+      fill: var(--color-purple-4);
+    }
+  }
+
+  & > button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    padding-inline-start: var(--padding-start);
+    padding-inline-end: 3rem;
+
+    padding-block: 0.875rem;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+
+    background-color: transparent;
+  }
 }
 
 @media (min-width: 768px) {
-  .nav-container {
+  /* open small sidebar control button */
+  .nav-container[data-open='true'] {
     display: grid;
+  }
+
+  .nav-container {
+    top: 0;
+    width: 100%;
+    grid-column: 1;
+    margin-inline: 0;
+    border-radius: 0;
+    min-width: auto;
+
     position: relative;
+    display: grid;
+    border-right: 2px solid var(--t-border-color);
   }
 
   .nav {
-    display: grid;
     grid-template-rows: max-content 1fr max-content;
     overflow-x: hidden;
 
-    position: relative;
-
-    margin-inline: 0;
-    width: var(--navigation-width);
-    transition: width 1s ease-in-out;
-    /* overflow-x: hidden; */
-
     & > * {
-      min-width: var(--navigation-width);
+      min-width: max-content;
     }
+  }
+
+  .nav-container[data-open='false'] .nav-control {
+    display: block;
   }
 
   .nav-control {
     width: 56px;
     height: 48px;
-    display: none;
     place-content: center;
     position: absolute;
 
@@ -131,14 +183,14 @@
     bottom: 0;
     right: 0;
     transform: translateX(100%) translateY(-30px);
-    background-color: red;
   }
-  /* Close main sidebar */
-  .nav-container[data-open='false'] .nav {
-    width: 0;
+
+  .control {
+    padding-bottom: 2rem;
+    padding-inline: 1.5rem;
   }
-  /* open small sidebar control button */
-  .nav-container[data-open='false'] .nav-control {
-    display: block;
+
+  .hide-sidebar-container {
+    display: flex;
   }
 }

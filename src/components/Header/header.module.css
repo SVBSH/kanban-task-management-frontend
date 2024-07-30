@@ -1,5 +1,5 @@
 .header {
-  grid-column: 2;
+  grid-column: 1/-1;
   grid-row: 1;
 
   display: grid;
@@ -38,7 +38,6 @@
 
 .new-task-container {
   grid-column: 4;
-  /* padding-right: 1rem; */
 
   & > button {
     border: none;

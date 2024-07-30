@@ -256,7 +256,7 @@ h4 {
   height: 100vh;
   position: relative;
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
   background-color: hsl(221, 69%, 94%);
 }
@@ -276,10 +276,20 @@ h4 {
 }
 
 @media (min-width: 768px) {
+  .main {
+    transition: grid-template-columns 1s ease-in-out;
+    grid-template-columns: 300px 1fr;
+  }
+
+  .main:has(nav[data-open='false']) {
+    grid-template-columns: 0px 1fr;
+  }
+
   .content {
     --navigation-width: 300px;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: max-content 1fr;
     grid-row: 2;
+    grid-column: 2;
 
     display: grid;
     grid-auto-flow: column;
