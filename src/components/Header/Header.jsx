@@ -27,20 +27,20 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
       {/* Control Sidebar Visibility */}
       <div
         className={styles['navbar-mobile-control']}
-        data-navOpen={isNavOpen}
+        data-nav-open={isNavOpen}
         onClick={handleToggleNav}
       >
         <img
-          className={!isNavOpen && styles['hidden']}
+          className={!isNavOpen ? styles['hidden'] : ''}
           src={iconSidebarVisible}
           alt="Sidebar Visible"
-          data-sidebarVisible
+          data-sidebar-visible
         />
         <img
-          className={isNavOpen && styles['hidden']}
+          className={isNavOpen ? styles['hidden'] : ''}
           src={iconSidebarHidden}
           alt="Sidebar Hidden"
-          data-sidebarHidden
+          data-sidebar-hidden
         />
       </div>
 
