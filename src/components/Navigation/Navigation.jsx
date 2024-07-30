@@ -18,7 +18,7 @@ const Navigation = ({ isNavOpen, handleToggleNav }) => {
 
         {/* Board List */}
         <ul className={styles['board-list']}>
-          <li className={styles['board-item']}>
+          <li className={styles['board-item']} data-active="false">
             <button className="color-gray-3 fw-700">
               {/* TODO: set alt property to board name */}
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">

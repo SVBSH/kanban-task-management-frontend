@@ -113,6 +113,15 @@
     }
   }
 
+  &[data-active='false']:is(:hover, :focus-within) button {
+    background-color: var(--color-purple-4-hover);
+    color: var(--color-purple-4);
+
+    path {
+      fill: var(--color-purple-4);
+    }
+  }
+
   &[data-type='new-board'] button {
     color: var(--color-purple-4);
 
@@ -122,6 +131,7 @@
   }
 
   & > button {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -186,11 +196,29 @@
   }
 
   .control {
+    padding-inline-start: 0rem;
+
+    padding-inline-end: 1rem;
     padding-bottom: 2rem;
-    padding-inline: 1.5rem;
   }
 
   .hide-sidebar-container {
     display: flex;
+    padding-block: 1rem;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    padding-inline-start: 1.5rem;
+
+    &:is(:hover, :focus-within) {
+      background-color: var(--color-purple-4-hover);
+
+      & > span {
+        color: var(--color-purple-4);
+      }
+    }
+  }
+
+  .theme-switch-container {
+    margin-inline-start: 1.5rem;
   }
 }
