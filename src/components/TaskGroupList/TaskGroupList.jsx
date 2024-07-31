@@ -1,7 +1,8 @@
 import styles from './taskGroupList.module.css'
 import TaskGroupItem from '../TaskGroupItem/TaskGroupItem'
+import { useState } from 'react'
 
-const taskGroupList = [
+const taskGroupListDefault = [
   {
     name: 'Todo',
     tasks: [
@@ -185,10 +186,55 @@ const taskGroupList = [
 ]
 
 const TaskGroupList = (props) => {
+  const [taskGroupList, setTaskGroupList] = useState(taskGroupListDefault)
+
   const boardEmpty = taskGroupList.length === 0
   taskGroupList.forEach((taskGroup) => {
     console.log(taskGroup)
   })
+
+  const moveTask = (sourceGroupName, targetGroupName, taskTitle) => {
+    console.log(`Move: ${sourceGroupName} -> ${targetGroupName} (${taskTitle})`)
+    setTaskGroupList((prevList) => {
+      // Find the source and target task groups
+      const sourceGroup = prevList.find(
+        (group) => group.name === sourceGroupName,
+      )
+      const targetGroup = prevList.find(
+        (group) => group.name === targetGroupName,
+      )
+
+      // If either group doesn't exist, return the original list
+      if (!sourceGroup || !targetGroup) return prevList
+
+      // Find the task to move
+      const taskToMove = sourceGroup.tasks.find(
+        (task) => task.title === taskTitle,
+      )
+      // If the task doesn't exist, return the original list
+      if (!taskToMove) return prevList
+
+      // Remove the task from the source group
+      const updatedSourceTasks = sourceGroup.tasks.filter(
+        (task) => task.title !== taskTitle,
+      )
+
+      // Add the task to the target group
+      const updatedTargetTasks = [...targetGroup.tasks, taskToMove]
+
+      // Return the updated task group list
+      return prevList.map((group) => {
+        if (group.name === sourceGroupName) {
+          return { ...group, tasks: updatedSourceTasks }
+        }
+        if (group.name === targetGroupName) {
+          return { ...group, tasks: updatedTargetTasks }
+        }
+        return group
+      })
+    })
+  }
+
   return (
     <div
       data-board-empty={boardEmpty}
@@ -201,6 +247,8 @@ const TaskGroupList = (props) => {
               key={taskGroup.name}
               taskGroupTitle={taskGroup.name}
               tasks={taskGroup.tasks}
+              taskGroupList={taskGroupList}
+              moveTask={moveTask}
             />
           ))}
           {/* TODO: add new column */}
