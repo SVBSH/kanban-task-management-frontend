@@ -6,4 +6,7 @@
 
   padding-block: 1.4375rem;
   padding-inline: 1rem;
+  /* TODO: add box shadow */
+  /* box-shadow: 2px 2px 2px 1px #828fa3; */
+  border-radius: 8px;
 }
