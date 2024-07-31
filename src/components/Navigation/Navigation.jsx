@@ -12,7 +12,12 @@ const Navigation = ({ isNavOpen, handleToggleNav }) => {
       data-open={isNavOpen}
     >
       <div className={styles['nav']}>
-        <h2 className={styles['heading-all-boards'] + ' | color-gray-3'}>
+        <h2
+          className={
+            styles['heading-all-boards'] +
+            ' | color-gray-3 fz-heading-s text-upper'
+          }
+        >
           All Boards (3)
         </h2>
 

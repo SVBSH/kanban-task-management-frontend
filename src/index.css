@@ -116,6 +116,13 @@ button[class] {
   --color-purple-4: hsl(242 48% 58%);
   --color-purple-4-hover: hsl(from var(--color-purple-4) h s l / 0.1);
   --sidebar-width: 300px;
+  /* font size setup */
+  --fz-heading-xl: font-size: 1.5rem;
+  --fz-heading-l: font-size: 1.125rem;
+  --fz-heading-m: font-size: 0.9375rem;
+  --fz-heading-s: font-size: 0.75rem;
+  --fz-body-l: font-size: 0.8125rem;
+  --fz-body-m: font-size: 0.75rem;
 }
 
 html,
@@ -135,6 +142,93 @@ html[data-theme='light'] {
   --t-clr-primary-4: var(--color-white-4);
 
   --t-border-color: var(--color-gray-2);
+}
+
+h1,
+.fz-heading-xl {
+  font-size: 1.5rem;
+}
+
+h2,
+.fz-heading-l {
+  font-size: 1.125rem;
+}
+
+h3,
+button,
+.fz-heading-m {
+  font-size: 0.9375rem;
+}
+
+h4,
+.fz-heading-s {
+  font-size: 0.75rem;
+  letter-spacing: 2.4px;
+}
+
+p,
+.fz-body-l {
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+body,
+.fz-body-m {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  font-weight: 700;
+  background-color: var(--btn-bg-color, black);
+  color: var(--btn-color, white);
+  border-radius: 24px;
+  /* max-width: 255px; */
+  cursor: pointer;
+
+  &:is(:hover, :focus-within) {
+    background-color: var(--btn-bg-color-hover, white);
+    color: var(--btn-color-hover, black);
+  }
+}
+
+.btn[data-type='primary'][data-size='l'] {
+  padding-block: 0.9375rem;
+  font-size: var(--fz-heading-m);
+
+  --btn-bg-color: var(--color-purple-4);
+  --btn-color: white;
+
+  --btn-bg-color-hover: var(--color-purple-3);
+  --btn-color-hover: var(--color-white-4);
+}
+
+.btn[data-type='primary'][data-size='s'] {
+  padding-block: 0.5rem;
+  font-size: var(--fz-body-l);
+}
+
+.btn[data-type='secondary'] {
+  padding-block: 0.5rem;
+  --btn-color: var(--color-purple-4);
+  --btn-bg-color: hsl(from var(--color-purple-4) h s l / 0.1);
+
+  --btn-bg-color-hover: hsl(from var(--color-purple-4) h s l / 0.25);
+  --btn-color-hover: var(--color-purple-4);
+}
+
+/* TODO: update bg color bug */
+.btn[data-type='destructive'] {
+  padding-block: 0.5rem;
+  --btn-bg-color: var(--color-red-4);
+  background-color: var(--color-red-4);
+
+  --btn-color: var(--color-white-4);
+
+  --btn-bg-color-hover: var(--color-red-3);
+  --btn-color-hover: var(--color-white-4);
 }
 
 .fw-200 {

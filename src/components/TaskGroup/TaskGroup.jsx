@@ -1,7 +1,7 @@
 import styles from './taskGroup.module.css'
 import TaskList from '../TaskList/TaskList'
 const TaskGroup = (props) => {
-  const boardEmpty = !true
+  const boardEmpty = true
 
   return (
     <div
@@ -24,10 +24,12 @@ const TaskGroup = (props) => {
         </ul>
       ) : (
         <>
-          <p className="color-gray-3 fw-500">
+          <p className="color-gray-3 fw-700 fz-heading-l">
             This board is empty. Create a new column to get started.
           </p>
-          <button className="">+ Add New Column</button>
+          <button data-type="primary" data-size="l" className="btn">
+            + Add New Column
+          </button>
         </>
       )}
     </div>

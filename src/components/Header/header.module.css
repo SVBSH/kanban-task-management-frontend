@@ -31,9 +31,14 @@
 }
 
 .add-new-task-button-sm {
+  cursor: pointer;
   padding-block: 0.625rem;
   padding-inline: 1.125rem;
   border-radius: 24px;
+
+  &:is(:hover, :focus-within) {
+    background-color: var(--color-purple-3);
+  }
 }
 
 .new-task-container {

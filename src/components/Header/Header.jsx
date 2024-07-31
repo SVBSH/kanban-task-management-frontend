@@ -20,9 +20,7 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
         <source srcSet={logoDesktop} media="(min-width: 768px)" />
         <img src={logoMobile} alt="logo" />
       </picture>
-      <h1 className="clr-primary-2" style={{ fontSize: '18px' }}>
-        Platform Launch
-      </h1>
+      <h1 className="clr-primary-2">Platform Launch</h1>
 
       {/* Control Sidebar Visibility */}
       <div
@@ -46,8 +44,10 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
 
       <div className={styles['new-task-container']}>
         <button
+          data-type="primary"
+          data-size="l"
           className={
-            styles['add-new-task-button-lg'] + ' bg-purple-4 clr-white'
+            styles['add-new-task-button-lg'] + ' bg-purple-4 clr-white btn'
           }
         >
           + Add New Task

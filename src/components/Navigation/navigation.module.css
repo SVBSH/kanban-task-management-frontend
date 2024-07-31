@@ -18,6 +18,7 @@
 
 .heading-all-boards {
   padding-inline-start: var(--padding-start);
+  padding-bottom: 1.1875rem;
 }
 
 .nav-container[data-open='true'] {
