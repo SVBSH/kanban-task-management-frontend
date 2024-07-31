@@ -247,7 +247,6 @@ const TaskGroupList = (props) => {
               key={taskGroup.name}
               taskGroupTitle={taskGroup.name}
               tasks={taskGroup.tasks}
-              taskGroupList={taskGroupList}
               moveTask={moveTask}
             />
           ))}

@@ -3,7 +3,7 @@ import Task from '../TaskItem/Task'
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../../Constants'
 
-const TaskList = ({ taskGroupTitle, tasks, taskGroupList, moveTask }) => {
+const TaskList = ({ taskGroupTitle, tasks, moveTask }) => {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.TASK,
     drop: (item) => migrateTask(item),
