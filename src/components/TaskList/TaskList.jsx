@@ -1,30 +1,18 @@
 import styles from './taskList.module.css'
 import Task from '../TaskItem/Task'
 
-const TaskList = () => {
+const TaskList = ({ tasks }) => {
   return (
     <ul className={styles['task-list']} role="list">
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
+      {tasks.map((task) => (
+        <Task
+          key={task.title}
+          title={task.title}
+          description={task.description}
+          status={task.status}
+          subtasks={task.subtasks}
+        />
+      ))}
     </ul>
   )
 }

@@ -1,0 +1,17 @@
+.task-group-item {
+  max-width: 300px;
+  min-width: 280px;
+  border: 1px solid black;
+
+  &[data-new-column='true'] {
+    /* https://youtu.be/8MaCTDkoVd8?si=FoS6Q97NeA7dDncC */
+    position: sticky;
+    /* right: 0; */
+    top: var(--spacing);
+    cursor: pointer;
+    background-color: pink;
+    place-content: center;
+    text-align: center;
+    max-height: 88vh;
+  }
+}

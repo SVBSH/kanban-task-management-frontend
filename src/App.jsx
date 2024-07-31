@@ -1,4 +1,4 @@
-import TaskGroup from './components/TaskGroup/TaskGroup'
+import TaskGroupList from './components/TaskGroupList/TaskGroupList'
 import HeaderNavigation from './components/HeaderNavigation/HeaderNavigation'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <main className="main">
         <HeaderNavigation />
-        <TaskGroup />
+        <TaskGroupList />
       </main>
     </>
   )

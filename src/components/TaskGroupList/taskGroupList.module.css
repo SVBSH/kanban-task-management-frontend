@@ -21,6 +21,7 @@
 
 .task-group-list {
   display: grid;
+  grid-template-columns: min-content;
   /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
   grid-auto-flow: column;
   gap: var(--spacing);
@@ -45,23 +46,5 @@
     position: absolute;
     border-radius: 50%;
     background-color: rgb(42, 107, 203);
-  }
-}
-
-.task-group-item {
-  max-width: 300px;
-  min-width: 280px;
-  border: 1px solid black;
-
-  &[data-new-column='true'] {
-    /* https://youtu.be/8MaCTDkoVd8?si=FoS6Q97NeA7dDncC */
-    position: sticky;
-    /* right: 0; */
-    top: var(--spacing);
-    cursor: pointer;
-    background-color: pink;
-    place-content: center;
-    text-align: center;
-    max-height: 88vh;
   }
 }
