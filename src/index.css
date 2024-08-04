@@ -133,6 +133,8 @@ html[data-theme='dark'] {
   --t-clr-primary-4: var(--color-gray-6);
 
   --t-border-color: var(--color-gray-4);
+
+  --t-form-label: var(--color-white-4);
 }
 
 html[data-theme='light'] {
@@ -141,7 +143,8 @@ html[data-theme='light'] {
   --t-clr-primary-3: var(--color-white-4);
   --t-clr-primary-4: var(--color-white-4);
 
-  --t-border-color: var(--color-gray-2);
+  --t-border-color: hsl(from var(--color-gray-3) h s l / 0.95);
+  --t-form-label: var(--color-gray-3);
 }
 
 *::-webkit-scrollbar {
@@ -163,6 +166,21 @@ html[data-theme='light'] {
 *::-webkit-scrollbar-button {
   background-color: transparent;
   border-radius: 5px;
+}
+
+.dialog {
+  position: absolute;
+  z-index: 999;
+  inset: 0;
+  height: max-content;
+  width: max-content;
+  margin: auto;
+  transition-property: display opacity overlay;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 30px 100vw hsl(from var(--color-purple-4) h s l / 0.1);
 }
 
 h1,

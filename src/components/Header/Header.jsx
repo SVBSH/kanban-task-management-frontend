@@ -1,18 +1,29 @@
 import { useState } from 'react'
 
 import styles from './header.module.css'
+import Modal from '../Modal/Modal'
+
 import iconSidebarVisible from '/icon-chevron-up.svg'
 import iconSidebarHidden from '/icon-chevron-down.svg'
 import iconAddNewTask from '/icon-add-task-mobile.svg'
 import logoMobile from '/logo-mobile.svg'
 import logoDesktop from '/logo-dark.svg'
 
+const FormNewTaskStatuses = ['Todo', 'Doing', 'Done']
+
 const Header = ({ isNavOpen, handleToggleNav }) => {
+  const [showModal, setShowModal] = useState(true)
   const [boardControlMenuOpen, setBoardControlMenuOpen] = useState(false)
 
   function handleBoardControlMenuOpen() {
     setBoardControlMenuOpen((boardControlMenuOpen) => !boardControlMenuOpen)
   }
+
+  function handleShowModal() {
+    setShowModal((prevState) => !prevState)
+  }
+
+  // TODO: implement
 
   return (
     <header className={styles.header + ' bg-primary-3'}>
@@ -44,6 +55,7 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
 
       <div className={styles['new-task-container']}>
         <button
+          onClick={handleShowModal}
           data-type="primary"
           data-size="l"
           className={
@@ -59,6 +71,65 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
         >
           <img src={iconAddNewTask} alt="Add New Task" />
         </button>
+        {showModal ? (
+          <Modal openModal={showModal} onClose={handleShowModal}>
+            <div className={styles['form-container']}>
+              <h1>Add New Task</h1>
+              <form
+                className={styles['form']}
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  const formData = new FormData(e.target)
+                  const obj = {
+                    title: formData.get('title') ?? '',
+                    description: formData.get('description') ?? '',
+                    taskStatus: formData.get('taskStatus') ?? '',
+                  }
+                  console.log(obj)
+                  handleShowModal()
+                }}
+              >
+                <div className={styles['form-row'] + ' '}>
+                  <label htmlFor="title">Title</label>
+                  <input
+                    required
+                    type="text"
+                    name="title"
+                    id="title"
+                    placeholder="e.g. Build UI for onboarding."
+                  />
+                </div>
+                <div className={styles['form-row'] + ' '}>
+                  <label htmlFor="description">Description</label>
+                  <textarea
+                    id="description"
+                    type="text"
+                    name="description"
+                    placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little."
+                  />
+                </div>
+                <div className={styles['form-row'] + ' '}>
+                  <label htmlFor="subtasks">Subtasks</label>
+                  <input type="text" name="subtasks" id="subtasks" />
+                </div>
+                <div className={styles['form-row'] + ' '}>
+                  <label htmlFor="taskStatus">Status</label>
+                  <select required name="taskStatus" id="taskStatus">
+                    {FormNewTaskStatuses.map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <button className="btn" data-type="primary" data-size="l">
+                  Create Task
+                </button>
+              </form>
+            </div>
+          </Modal>
+        ) : null}
       </div>
 
       {/* TODO: Create a separate component for the board control */}
