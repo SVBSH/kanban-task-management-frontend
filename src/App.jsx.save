@@ -1,0 +1,88 @@
+import TaskGroupList from './components/TaskGroupList/TaskGroupList'
+raimport HeaderNavigation from './components/HeaderNavigation/HeaderNavigation'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
+import { socket } from './socket.js'
+import { useState, useEffect } from 'react'
+
+
+
+function getCursorElement (id) {
+  var elementId = 'cursor-' + id;
+  var element = document.getElementById(elementId);
+  if(element == null) {
+    element = document.createElement('div');
+    element.id = elementId;
+    element.className = 'cursor';
+    // Perhaps you want to attach these elements another parent than document
+    document.appendChild(element);
+  }
+  return element;
+}
+
+
+
+function App() {
+  const [isConnected, setIsConnected] = useState(socket.connected);
+
+  useEffect(() => {
+    function onConnect() {
+      setIsConnected(true);
+    }
+
+    function onDisconnect() {
+      setIsConnected(false);
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+
+    socket.on('draw_cursor', function (data) {
+      var el = getCursorElement(data.id);
+      el.style.x = data.line[0].x;
+      el.style.y = data.line[0].y;
+    })
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+    };
+  }, []);
+
+  const [MousePosition, setMousePosition] = useState({
+    left: 0,
+    top: 0
+})
+
+  useEffect(() => {
+
+  }, [MousePosition])
+
+  function handleMouseMove(ev) { 
+    setMousePosition({left: ev.pageX, top: ev.pageY}); 
+    console.log(ev.pageX, ev.pageY); 
+    // if (mouse.move && mouse.pos_prev) {
+    //   // send line to to the server
+    //   socket.emit('draw_cursor', { line: [ mouse.pos, mouse.pos_prev ] });
+    }
+  }
+
+
+  return (
+    <>
+      <DndProvider backend={HTML5Backend}>
+        <main className="main" onMouseMove={handleMouseMove}>
+          <h1>{isConnected ? "Connected" : "Not Connected"}</h1>
+          <HeaderNavigation />
+          <TaskGroupList />
+        </main>
+      </DndProvider>
+    </>
+  )
+
+export default App
+
+
+// npx sequelize-cli db:drop
+// npx sequelize-cli db:create
+// npx sequelize-cli db:migrate

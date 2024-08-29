@@ -12,7 +12,7 @@ import logoDesktop from '/logo-dark.svg'
 const FormNewTaskStatuses = ['Todo', 'Doing', 'Done']
 
 const Header = ({ isNavOpen, handleToggleNav }) => {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [boardControlMenuOpen, setBoardControlMenuOpen] = useState(false)
 
   function handleBoardControlMenuOpen() {
