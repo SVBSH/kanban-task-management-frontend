@@ -1,11 +1,20 @@
 import styles from './navigation.module.css'
-import iconBoard from '/icon-board.svg'
 import iconShowSidebar from '/icon-show-sidebar.svg'
 import iconHideSidebar from '/icon-hide-sidebar.svg'
 import iconThemeLight from '/icon-light-theme.svg'
 import iconThemeDark from '/icon-dark-theme.svg'
+import { themeToggle } from '../../utils'
+
+
 
 const Navigation = ({ isNavOpen, handleToggleNav }) => {
+
+
+  function handleThemeSwitch() {
+    themeToggle()
+    // TODO: 
+  }
+
   return (
     <nav
       className={styles['nav-container'] + ' bg-primary-3'}
@@ -67,6 +76,7 @@ const Navigation = ({ isNavOpen, handleToggleNav }) => {
             <img src={iconThemeLight} alt="theme light" />
             <button
               className={styles['theme-switch'] + ' bg-purple-4'}
+              onClick={handleThemeSwitch}
             ></button>
             <img src={iconThemeDark} alt="theme dark" />
           </div>

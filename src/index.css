@@ -404,6 +404,8 @@ h4 {
   margin-block: auto;
   padding-inline-start: 1rem;
   margin: auto;
+  padding-block: 2rem;
+
 }
 
 .content {
@@ -435,11 +437,9 @@ h4 {
 
   .logo {
     width: 302px;
+    height: 100%;
+    margin-right: 2rem;
     border-right: 2px solid var(--t-border-color);
-
-    &[data-is-nav-open='false'] {
-      border-bottom: 2px solid var(--t-border-color);
-    }
   }
 }
 

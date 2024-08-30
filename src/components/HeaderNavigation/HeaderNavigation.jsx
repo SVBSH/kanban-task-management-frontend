@@ -4,11 +4,12 @@ import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 
 const HeaderNavigation = (props) => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(true)
 
   function handleToggleNav() {
     setIsNavOpen((isNavOpen) => !isNavOpen)
   }
+  
   return (
     <>
       <Header isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />

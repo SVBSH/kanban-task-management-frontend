@@ -4,30 +4,44 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 import { socket } from './socket.js'
 import { useState, useEffect } from 'react'
+import { removeCursorElement, getCursorElement } from './utils.js'
 
-
-function getCursorElement(id) {
-  var elementId = 'cursor-' + id
-  var element = document.getElementById(elementId)
-  if (element == null) {
-    element = document.createElement('div')
-    element.id = elementId
-    element.className = 'cursor'
-    document.body.appendChild(element)
-  }
-  return element
-}
-
-function removeCursorElement(data) {
-  const el = getCursorElement(data.id)
-  document.body.removeChild(el)
-}
 
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected)
+  
+  function handleMouseMove(ev) {
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+  
+    const normalizedX = ev.pageX / viewportWidth
+    const normalizedY = ev.pageY / viewportHeight
+  
+    socket.emit('draw_cursor', {
+      line: [normalizedX, normalizedY],
+      id: socket.id,
+    })
+  }
+
+  function setSavedTheme() {
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme) {
+      const root = document.querySelector('html')
+      root.dataset.theme = savedTheme
+    }
+  }
+
+  async function fetchInitialBoard() {
+    const data = await fetch('/api/boards/1/initialLoad')
+    console.log(data.body)
+  }
 
   useEffect(() => {
+
+    setSavedTheme()
+    fetchInitialBoard()
+
     function onConnect() {
       setIsConnected(true)
     }
@@ -48,7 +62,6 @@ function App() {
       el.style.left = actualX + 'px';
       el.style.top = actualY + 'px';
     }
-    
 
     socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
@@ -63,31 +76,12 @@ function App() {
     }
   }, [])
 
-  const [MousePosition, setMousePosition] = useState({
-    left: 0,
-    top: 0
-  })
-
-  function handleMouseMove(ev) { 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-  
-    const normalizedX = ev.pageX / viewportWidth;
-    const normalizedY = ev.pageY / viewportHeight;
-  
-    socket.emit('draw_cursor', { 
-      line: [ normalizedX, normalizedY ], 
-      id: socket.id 
-    });
-  }
-  
-
 
   return (
     <>
       <DndProvider backend={HTML5Backend}>
         <main className="main" onMouseMove={handleMouseMove}>
-          <h1>{isConnected ? "Connected" : "Not Connected"}</h1>
+          {/* <h1>{isConnected ? "Connected" : "Not Connected"}</h1> */}
           <HeaderNavigation />
           <TaskGroupList />
         </main>

@@ -8,6 +8,7 @@ import iconSidebarHidden from '/icon-chevron-down.svg'
 import iconAddNewTask from '/icon-add-task-mobile.svg'
 import logoMobile from '/logo-mobile.svg'
 import logoDesktop from '/logo-dark.svg'
+import iconClose from '/icon-close.svg'
 
 const FormNewTaskStatuses = ['Todo', 'Doing', 'Done']
 
@@ -22,8 +23,6 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
   function handleShowModal() {
     setShowModal((prevState) => !prevState)
   }
-
-  // TODO: implement
 
   return (
     <header className={styles.header + ' bg-primary-3'}>
@@ -65,6 +64,7 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
           + Add New Task
         </button>
         <button
+          onClick={handleShowModal}
           className={
             styles['add-new-task-button-sm'] + ' bg-purple-4 clr-white'
           }
@@ -74,7 +74,10 @@ const Header = ({ isNavOpen, handleToggleNav }) => {
         {showModal ? (
           <Modal openModal={showModal} onClose={handleShowModal}>
             <div className={styles['form-container']}>
-              <h1>Add New Task</h1>
+              <div className={styles['heading-container']}>
+                <h1>Add New Task</h1>
+                <img src={iconClose} className={styles['close-modal']} alt="close modal" onClick={handleShowModal} />
+              </div>
               <form
                 className={styles['form']}
                 onSubmit={(e) => {

@@ -61,12 +61,12 @@
   width: 40px;
   height: 20px;
   border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
 
   &::after {
     --size: 14px;
     content: '';
     position: absolute;
+    transition: transform 0.2s ease-out;
 
     top: 0;
     bottom: 0;
@@ -79,12 +79,17 @@
     background-color: var(--color-white-4);
     border-radius: 50%;
   }
-
-  &::after {
-    /* toggle between -70% and 70% */
-    transform: translateX(70%);
-  }
 }
+
+/* Control theme switch position based on theme */
+html[data-theme='dark'] .theme-switch::after {
+  transform: translateX(70%);
+}
+
+html[data-theme='light'] .theme-switch::after {
+  transform: translateX(-70%);
+}
+
 
 .hide-sidebar-container {
   cursor: pointer;
