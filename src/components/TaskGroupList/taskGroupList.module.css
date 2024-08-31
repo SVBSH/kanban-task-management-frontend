@@ -28,23 +28,3 @@
   padding-block: var(--spacing);
   padding-inline: var(--spacing);
 }
-
-.task-group-title {
-  --task-group-title-size: 15px;
-  position: relative;
-  padding-left: calc(var(--task-group-title-size) + 12px);
-
-  &::after {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin-block: auto;
-
-    width: var(--task-group-title-size);
-    height: var(--task-group-title-size);
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgb(42, 107, 203);
-  }
-}
