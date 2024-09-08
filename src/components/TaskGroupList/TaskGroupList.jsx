@@ -195,6 +195,10 @@ const TaskGroupList = (props) => {
 
   const moveTask = (sourceGroupName, targetGroupName, taskTitle) => {
     console.log(`Move: ${sourceGroupName} -> ${targetGroupName} (${taskTitle})`)
+    if (sourceGroupName === targetGroupName) {
+      return
+    }
+
     setTaskGroupList((prevList) => {
       // Find the source and target task groups
       const sourceGroup = prevList.find(
