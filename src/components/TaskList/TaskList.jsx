@@ -21,7 +21,7 @@ const TaskList = ({ taskGroupTitle, tasks, moveTask }) => {
       ref={drop}
       className={styles['task-list']}
       role="list"
-      style={{ border: isOver ? '2px solid red' : '0px' }}
+      style={{ border: isOver ? '1px solid red' : '0px' }}
     >
       {tasks.map((task) => (
         <Task
