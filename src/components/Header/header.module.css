@@ -66,7 +66,7 @@ html[data-theme='light'] .logo-desktop path {
     /* font: inherit; */
     font-weight: 600;
     border-radius: 6px;
-    border: 1px solid var(--t-border-color);
+    border: 1px solid var(--t-input-border-color);
     outline: none;
     color: var(--color-white-4);
     background-color: inherit;

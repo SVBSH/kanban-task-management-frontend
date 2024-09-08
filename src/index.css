@@ -133,6 +133,7 @@ html[data-theme='dark'] {
   --t-clr-primary-4: var(--color-gray-6);
 
   --t-border-color: var(--color-gray-4);
+  --t-input-border-color: hsl(from var(--color-gray-3) h s l / 0.95); 
 
   --t-form-label: var(--color-white-4);
 }
@@ -143,7 +144,7 @@ html[data-theme='light'] {
   --t-clr-primary-3: var(--color-white-4);
   --t-clr-primary-4: var(--color-white-4);
 
-  --t-border-color: hsl(from var(--color-gray-3) h s l / 0.95);
+  --t-border-color: var(--color-gray-2);
   --t-form-label: var(--color-gray-3);
 }
 
@@ -181,7 +182,7 @@ html[data-theme='light'] {
   transition-behavior: allow-discrete;
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 0 30px 100vw hsl(from var(--color-purple-4) h s l / 0.1);
+  box-shadow: 0 0 30px 100vw hsl(from var(--color-black-4) h s l / 0.5);
 }
 
 h1,
