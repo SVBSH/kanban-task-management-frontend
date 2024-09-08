@@ -1,3 +1,22 @@
+.logoo  {
+  background-color: red;
+  fill: red;
+}
+
+.logo-desktop {
+  display: none;
+}
+
+
+/* Control logo background color based on a theme */
+html[data-theme='dark'] .logo-desktop path {
+  fill: var(--color-white-4);
+}
+
+html[data-theme='light'] .logo-desktop path {
+  fill: var(--color-black-4);
+}
+
 .form-container {
   display: grid;
   gap: 2rem;
@@ -181,6 +200,7 @@
   .header {
     border-bottom: 2px solid var(--t-border-color);
   }
+
   .navbar-mobile-control {
     display: none;
   }
@@ -190,6 +210,15 @@
   }
 
   .add-new-task-button-lg {
+    display: block;
+  }
+
+
+  .logo-mobile {
+    display: none;
+  }
+
+  .logo-desktop {
     display: block;
   }
 }
