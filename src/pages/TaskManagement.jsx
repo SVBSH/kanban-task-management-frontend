@@ -12,7 +12,7 @@ import api from '../axios-config.js'
 export default function TaskManagement() {
   const [isConnected, setIsConnected] = useState(socket.connected)
   const [boards, setBoards] = useState([])
-  const [activeBoardId, setActiveBoardId] = useState(0)
+  const [activeBoardId, setActiveBoardId] = useState(-1)
 
   function handleMouseMove(ev) {
     const viewportWidth = window.innerWidth
@@ -38,20 +38,20 @@ export default function TaskManagement() {
   // fetch bords
   useEffect(() => {
     async function fetchInitialBoard() {
-      // const data = await fetch('/api/boards/1/initialLoad')
       const response = await api.get('/api/boards')
       const { data } = response.data
 
-      const boards = data.map((boardItem) => boardItem.Board)
-      setActiveBoardId(boards[0]?.id)
-      setBoards(boards)
+      if (data.length === 0) {
+        setActiveBoardId(-1)
+      } else {
+        setActiveBoardId(data[0]?.id)
+      }
 
-      console.log('boards', boards)
-      console.log('Active Board ID: ', boards[0]?.id)
+      setBoards(data)
     }
 
     fetchInitialBoard()
-  }, [activeBoardId])
+  }, [])
 
   useEffect(() => {
     setSavedTheme()
@@ -92,7 +92,11 @@ export default function TaskManagement() {
   return (
     <DndProvider backend={HTML5Backend}>
       <main className="main" onMouseMove={handleMouseMove}>
-        <HeaderNavigation boards={boards} />
+        <HeaderNavigation
+          boards={boards}
+          activeBoardId={activeBoardId}
+          setActiveBoardId={setActiveBoardId}
+        />
         <TaskGroupList activeBoardId={activeBoardId} />
       </main>
     </DndProvider>

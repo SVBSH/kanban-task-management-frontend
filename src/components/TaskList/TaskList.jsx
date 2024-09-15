@@ -25,12 +25,12 @@ const TaskList = ({ taskGroupTitle, tasks, moveTask }) => {
     >
       {tasks.map((task) => (
         <Task
-          key={task.title}
+          key={task.name}
           taskGroupTitle={taskGroupTitle}
-          title={task.title}
+          title={task.name}
           description={task.description}
           status={task.status}
-          subtasks={task.subtasks}
+          subtasks={task.Subtasks}
         />
       ))}
     </ul>

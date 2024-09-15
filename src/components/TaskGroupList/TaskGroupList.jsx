@@ -189,17 +189,16 @@ import api from '../../axios-config'
 const TaskGroupList = ({ activeBoardId }) => {
   const [taskGroupList, setTaskGroupList] = useState([])
 
-  const boardEmpty = taskGroupList.length === 0
-  taskGroupList.forEach((taskGroup) => {
-    // console.log(taskGroup)
-  })
-
   useEffect(() => {
     async function fetchBoard() {
       try {
-        const response = await api.get(`/api/boards/${activeBoardId}`)
+        if (activeBoardId === -1) {
+          return
+        }
+        const response = await api.get(`/api/boards/${activeBoardId}/all`)
         const data = response.data
-        console.log(data)
+        setTaskGroupList(data.data.TaskGroups)
+        console.log('koko:', data.data.TaskGroups)
       } catch (e) {
         console.error('TaskGroupList: unable to fetch data.')
       }
@@ -214,6 +213,7 @@ const TaskGroupList = ({ activeBoardId }) => {
     }
 
     setTaskGroupList((prevList) => {
+      console.log('Prev list: ', prevList)
       // Find the source and target task groups
       const sourceGroup = prevList.find(
         (group) => group.name === sourceGroupName,
@@ -223,48 +223,55 @@ const TaskGroupList = ({ activeBoardId }) => {
       )
 
       // If either group doesn't exist, return the original list
-      if (!sourceGroup || !targetGroup) return prevList
+      if (!sourceGroup || !targetGroup) {
+        return prevList
+      }
 
       // Find the task to move
-      const taskToMove = sourceGroup.tasks.find(
-        (task) => task.title === taskTitle,
+      const taskToMove = sourceGroup.Tasks.find(
+        (task) => task.name === taskTitle,
       )
       // If the task doesn't exist, return the original list
-      if (!taskToMove) return prevList
+      if (!taskToMove) {
+        return prevList
+      }
 
       // Remove the task from the source group
-      const updatedSourceTasks = sourceGroup.tasks.filter(
-        (task) => task.title !== taskTitle,
+      const updatedSourceTasks = sourceGroup.Tasks.filter(
+        (task) => task.name !== taskTitle,
       )
 
       // Add the task to the target group
-      const updatedTargetTasks = [...targetGroup.tasks, taskToMove]
+      const updatedTargetTasks = [...targetGroup.Tasks, taskToMove]
 
       // Return the updated task group list
-      return prevList.map((group) => {
+      const newList = prevList.map((group) => {
         if (group.name === sourceGroupName) {
-          return { ...group, tasks: updatedSourceTasks }
+          return { ...group, Tasks: updatedSourceTasks }
         }
         if (group.name === targetGroupName) {
-          return { ...group, tasks: updatedTargetTasks }
+          return { ...group, Tasks: updatedTargetTasks }
         }
         return group
       })
+
+      console.log('newList: ', newList)
+      return newList
     })
   }
 
   return (
     <div
-      data-board-empty={boardEmpty}
+      data-board-empty={taskGroupList.length === 0}
       className={styles['task-group-container'] + ' bg-primary-1'}
     >
-      {!boardEmpty ? (
+      {taskGroupList ? (
         <ul className={styles['task-group-list']} role="list">
           {taskGroupList.map((taskGroup) => (
             <TaskGroupItem
               key={taskGroup.name}
               taskGroupTitle={taskGroup.name}
-              tasks={taskGroup.tasks}
+              tasks={taskGroup.Tasks}
               moveTask={moveTask}
             />
           ))}

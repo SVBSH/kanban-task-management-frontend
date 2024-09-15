@@ -5,7 +5,13 @@ import iconThemeLight from '/icon-light-theme.svg'
 import iconThemeDark from '/icon-dark-theme.svg'
 import { themeToggle } from '../../utils'
 
-const Navigation = ({ isNavOpen, handleToggleNav, boards }) => {
+const Navigation = ({
+  isNavOpen,
+  handleToggleNav,
+  boards,
+  activeBoardId,
+  setActiveBoardId,
+}) => {
   function handleThemeSwitch() {
     themeToggle()
     // TODO:
@@ -33,9 +39,12 @@ const Navigation = ({ isNavOpen, handleToggleNav, boards }) => {
               <li
                 key={board.id}
                 className={styles['board-item']}
-                data-active="false"
+                data-active={board.id === activeBoardId}
               >
-                <button className="color-gray-3 fw-700">
+                <button
+                  className="color-gray-3 fw-700"
+                  onClick={() => setActiveBoardId(board.id)}
+                >
                   {/* TODO: set alt property to board name */}
                   <svg
                     width="16"

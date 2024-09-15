@@ -38,6 +38,5 @@ export function getAccessToken() {
 }
 
 export function isAuthenticated() {
-  console.log('IS AUTH: ', !!getAccessToken())
   return !!getAccessToken()
 }
