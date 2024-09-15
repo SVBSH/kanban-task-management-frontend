@@ -28,3 +28,16 @@ export function themeToggle() {
   localStorage.setItem('theme', newTheme)
   root.dataset.theme = newTheme
 }
+
+export function setAccessToken(token) {
+  localStorage.setItem('jwtToken', token)
+}
+
+export function getAccessToken() {
+  return localStorage.getItem('jwtToken')
+}
+
+export function isAuthenticated() {
+  console.log('IS AUTH: ', !!getAccessToken())
+  return !!getAccessToken()
+}

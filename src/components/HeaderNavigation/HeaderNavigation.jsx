@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Header from '../Header/Header'
 import Navigation from '../Navigation/Navigation'
 
-const HeaderNavigation = (props) => {
+const HeaderNavigation = ({boards}) => {
   const [isNavOpen, setIsNavOpen] = useState(true)
 
   function handleToggleNav() {
@@ -13,7 +13,7 @@ const HeaderNavigation = (props) => {
   return (
     <>
       <Header isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />
-      <Navigation isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} />
+      <Navigation isNavOpen={isNavOpen} handleToggleNav={handleToggleNav} boards={boards}/>
     </>
   )
 }
